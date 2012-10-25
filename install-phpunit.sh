@@ -1,4 +1,3 @@
-sudo su
 apt-get remove phpunit
 pear config-set auto_discover 1
 pear channel-discover pear.phpunit.de
