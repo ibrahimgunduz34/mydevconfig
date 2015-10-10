@@ -1,2 +1,55 @@
 #!/bin/sh
-sudo apt-get install vim curl apache2 php5 mysql-server mcrypt memcached php5-mysql php5-memcache php5-curl zend-framework phpmyadmin git
+# sudo apt-get install vim curl apache2 php5 mysql-server mcrypt memcached php5-mysql php5-memcache php5-curl zend-framework phpmyadmin git
+sudo apt-get install vim curl git python-pip python-dev php5
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+cd ~/.vim/bundle/ && git clone git@github.com:kien/ctrlp.vim.git
+sudo pip install git+git://github.com/powerline/powerline
+
+echo '
+set background=dark
+set cindent
+set smartindent
+set autoindent
+set expandtab
+set tabstop=4
+set shiftwidth=4
+"set cinkeys=0{,0},:,0#,!,!^F
+hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+"hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
+nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
+
+execute pathogen#infect()
+syntax on
+filetype plugin indent on
+
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+
+set laststatus=2
+set t_Co=256
+' >> ~/.vimrc
+
+echo '
+[alias]
+    lol = log --graph --pretty=oneline --decorate --abbrev-commit
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = red
+' >> ~/.gitconfig
+
+echo "
+PS1=$PS1'\[\033[0;33m\]$(__git_ps1)\[\e[0m\]$ \n'
+" >> ~/.bashrc
+
+cd ~/
+
+git config --global user.name "Ibrahim Gunduz"
+git config --global user.email "ibrahimgunduz34@gmail.com"
+

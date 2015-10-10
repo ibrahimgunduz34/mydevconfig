@@ -1,0 +1,10 @@
+[alias]
+    lol = log --graph --pretty=oneline --decorate --abbrev-commit 
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = red
