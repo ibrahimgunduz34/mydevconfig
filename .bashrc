@@ -19,7 +19,7 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-CLICOLOR=1
+export CLICOLOR=1
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
