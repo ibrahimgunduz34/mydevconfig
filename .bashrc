@@ -19,6 +19,8 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+CLICOLOR=1
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -112,6 +114,10 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# aliases
+alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
+
 
 PS1=$PS1'\[\033[0;33m\]$(__git_ps1)\[\e[0m\]$ \n'
 
